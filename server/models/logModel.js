@@ -4,16 +4,19 @@
  const mongoose = require('mongoose');
 
  const logSchema = new mongoose.Schema({
-    device_id: {
-        type: String,
-    },
-    deviceName: {
+    device_ip: {
         type: String,
     },
     method: {
         type: String,
     },
+    host: {
+        type: String,
+    },
     path: {
+        type: String,
+    },
+    msg: {
         type: String,
     },
  }, {timestamps: true});

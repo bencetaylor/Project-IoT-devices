@@ -23,6 +23,10 @@ const deviceSchema = new mongoose.Schema({
         maxLength: [100, 'A device name must have less or equal than a 100 characters!'],
         minLength: [1, 'A device name must be at least a character!'],
     },
+    device_ip: {
+        type: String,
+        required: [true, 'Device must have an IP adress!'],
+    },
     event: {
         type: eventSchema,
         required: [true, 'Device must provide an event!']
