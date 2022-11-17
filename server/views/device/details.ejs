@@ -1,0 +1,17 @@
+<html lang="en">
+    <%- include("../partials/head.ejs") %>
+<body>
+    <%- include("../partials/nav.ejs") %>
+
+    <div class="container">
+        <h2><%=device.device_name %></h2>
+        <div class="content">
+            <p><%=device.device_address.ip %>:<%=device.device_address.port %></p>
+        </div>
+        <a class="delete" data-doc="<%= device._id %>">delete</a>
+    </div>
+
+    <%- include("../partials/footer.ejs") %>
+
+</body>
+</html>

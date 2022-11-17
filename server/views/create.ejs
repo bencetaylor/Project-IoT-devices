@@ -1,0 +1,65 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+  <div class="container">
+    <h1>Create new device</h1>
+    <form action="/devices" method="post">
+      <div class="row mb-3">
+        <label for="name" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="name" name="name">
+        </div>
+      </div>
+      <fieldset class="row mb-3">
+        <legend class="col-form-label col-sm-2 pt-0">Type</legend>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="type" id="gridRadios1" value="hoover" checked>
+            <label class="form-check-label" for="gridRadios1">
+              Robot hoover
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="type" id="gridRadios2" value="solar">
+            <label class="form-check-label" for="gridRadios2">
+              Solar sensor
+            </label>
+          </div>
+          <div class="form-check disabled">
+            <input class="form-check-input" type="radio" name="type" id="gridRadios3" value="motion">
+            <label class="form-check-label" for="gridRadios3">
+              Motion Sensor
+            </label>
+          </div>
+        </div>
+      </fieldset>
+      <div class="row mb-3">
+        <label for="ip_address" class="col-sm-2 col-form-label">IP Address</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="ip_address" name="ip_address">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="port" class="col-sm-2 col-form-label">Port</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="port" name="port">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="connection" class="form-label">Connection</label>
+        <select id="connection" class="form-select" name="connection">
+          <option value="rest" selected>Rest API</option>
+          <option value="socket">Socket</option>
+        </select>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+  </div>
+
+  <%- include("./partials/footer.ejs") %>
+</body>
+</html>

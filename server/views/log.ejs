@@ -1,0 +1,47 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+  <body>
+    <%- include("./partials/nav.ejs") %>
+
+      <div class="container">
+        <h2>Logs</h2>
+
+        <% if (logs.length> 0) { %>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Device ID</th>
+                <th>Data</th>
+                <th>Timestamp</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% logs.forEach(log=> { %>
+                <tr>
+                  <td>
+                    <%= log.device_id %>
+                  </td>
+                  <td>
+                    <ul>
+                      <% Object.keys(log.data).forEach(key => { %>
+                        <li><%= key %> : <%= JSON.stringify(log.data[key]) %></li>
+                      <% }) %>
+                    </ul>
+                  </td>
+                  <td>
+                    <%= log.timestamp %>
+                  </td>
+                </tr>
+                <% }) %>
+            </tbody>
+          </table>
+
+          <% } else { %>
+            <p>There are no logs to display...</p>
+            <% } %>
+      </div>
+      <%- include("./partials/footer.ejs") %>
+  </body>
+
+</html>

@@ -4,21 +4,16 @@
  const mongoose = require('mongoose');
 
  const logSchema = new mongoose.Schema({
-    device_ip: {
+    device_id: {
         type: String,
     },
-    method: {
-        type: String,
+    data: {
+        type: Object,
     },
-    host: {
-        type: String,
-    },
-    path: {
-        type: String,
-    },
-    msg: {
-        type: String,
-    },
+    timestamp: {
+        type: Date,
+        default: Date.now()
+    }
  }, {timestamps: true});
  
  const Log = mongoose.model('Log', logSchema);

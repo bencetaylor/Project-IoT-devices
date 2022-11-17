@@ -1,19 +1,40 @@
 module.exports = {
     getDevice: (id) => getDevice(id),
-    logData: (id, data) => logData(id, data)
+    getDevices: () => getDevices(),
+    getDevicesByCommunication: (comm) => getDevicesByCommunication(comm),
+    createDevice: (data) => createDevice(data)
 };
 
-function getDevice(id) {
-    const obj = {
-        id: 'X8AKY9XR2G',
-        ip_address: 'localhost:3001',
-        type: 'solar sensor'
-    }
+const Log = require('../models/logModel')
+const Device = require('../models/deviceModel')
 
-    return obj;
+function getDevices() {
+    return Device.find();
 }
 
-function logData(deviceID, data) {
-    console.log(deviceID)
-    console.log(data)
+function getDevice(id) {
+    return Device.findById(id);
+}
+
+function createDevice(data) {
+    const device = new Device({
+        device_name: data.name,
+        type: {
+            type_name: data.type
+        },
+        device_address: {
+            ip: data.ip_address,
+            port: data.port
+        },
+        connection: data.connection
+    })
+    return device.save()
+}
+
+function getDevice(id) {
+    return Device.findById(id);
+}
+
+function getDevicesByCommunication(comm) {
+    return Device.find({connection: comm})
 }

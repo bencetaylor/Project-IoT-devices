@@ -1,0 +1,27 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+  <div class="create-device content">
+    <form action="/hoovers" method="PUT">
+      <label for="id">Device id:</label>
+      <input type="text" id="id" name="id" required>
+      <label for="name">Device name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="ip">Device ip:</label>
+      <input type="text" id="ip" name="ip" required>
+      <label for="status">Status:</label>
+      <input type="text" id="status" name="status" required></input>
+      <label for="battery_status">Battery status:</label>
+      <input type="text" id="battery_status" name="battery_status" required></input>
+      <label for="dust_bag_status">Dust bag status:</label>
+      <input type="text" id="dust_bag_status" name="dust_bag_status" required></input>
+      <button>Submit</button>
+    </form>
+  </div>
+
+  <%- include("./partials/footer.ejs") %>
+</body>
+</html>

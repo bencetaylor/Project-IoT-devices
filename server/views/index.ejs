@@ -1,0 +1,49 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+  <body>
+    <%- include("./partials/nav.ejs") %>
+
+      <div class="container">
+        <h2>All Devices</h2>
+
+        <% if (devices.length> 0) { %>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>IP Address</th>
+                <th>Type</th>
+                <th>Communication</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% devices.forEach(device=> { %>
+                <tr>
+                  <td>
+                    <a href="/devices/<%= device.id %>">
+                      <%= device.device_name %>
+                    </a>
+                  </td>
+                  <td>
+                    <%= device.device_address.ip %>:<%= device.device_address.port %>
+                  </td>
+                  <td>
+                    <%= device.type.type_name %>
+                  </td>
+                  <td>
+                    <%= device.connection %>
+                  </td>
+                </tr>
+                <% }) %>
+            </tbody>
+          </table>
+
+          <% } else { %>
+            <p>There are no devices to display...</p>
+            <% } %>
+      </div>
+      <%- include("./partials/footer.ejs") %>
+  </body>
+
+</html>

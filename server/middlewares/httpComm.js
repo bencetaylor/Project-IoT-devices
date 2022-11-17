@@ -1,14 +1,19 @@
 const http = require('http');
+const logService = require('../middlewares/logService')
 
-function sendGetRequest() {
-    console.log('send request')
-    http.get({ path: '/data', hostname: 'localhost', port: 3001 }, (res) => {
+function sendGetRequest(address) {
+    http.get({ path: '/data', hostname: address.ip, port: address.port }, (res) => {
         let data = ''
         res.on('data', (chunk) => { data += chunk })
-        res.on('end', () => { console.log(data) })
+        res.on('end', () => {
+            const recievedData = JSON.parse(data)
+            logService.createLog(recievedData.id, recievedData.data)
+        })
+    }).on('error', (err) => {
+        console.error('http communication error: ' + err)
     })
 };
 
 module.exports = {
-    sendGetRequest: () => sendGetRequest()
+    sendGetRequest: (address) => sendGetRequest(address)
 }
